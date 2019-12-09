@@ -13,5 +13,4 @@ public class Runner extends AbstractTestNGCucumberTests {
         return super.scenarios();
     }
 
-
 }
