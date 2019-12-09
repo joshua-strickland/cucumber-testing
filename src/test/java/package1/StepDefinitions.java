@@ -22,7 +22,7 @@ public class StepDefinitions implements En {
             //capabilities.setCapability("platformVersion", 10);
             capabilities.setCapability("platformName", "Android");
 
-             driver =  new AppiumDriver(appiumURL, capabilities);
+             driver = new AppiumDriver(appiumURL, capabilities);
 
         });
 
@@ -42,7 +42,6 @@ public class StepDefinitions implements En {
             //throw new cucumber.api.PendingException();
 
         });
-
          */
     }
 }
