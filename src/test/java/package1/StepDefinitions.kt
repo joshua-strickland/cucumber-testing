@@ -1,49 +1,42 @@
-package package1;
+package package1
 
-import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.AppiumDriver
+import io.appium.java_client.MobileElement
+import io.cucumber.java.Before
+import io.cucumber.java.en.Given
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.remote.DesiredCapabilities
+import java.net.MalformedURLException
+import java.net.URL
+
 //import io.cucumber.java8.En;
-import io.cucumber.java.Before;
 //import cucumber.api.java.en.Given;
-import io.cucumber.java.en.Given;
-import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class StepDefinitions {
-
-    AppiumDriver driver;
-    AutomationTools autoTools;
-
+class StepDefinitions {
+    var driver: AppiumDriver<MobileElement>? = null
+    var autoTools: AutomationTools? = null
     @Before
-    public void before() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        URL appiumURL = null;
+    fun before() {
+        val capabilities = DesiredCapabilities()
+        var appiumURL: URL? = null
         try {
-            appiumURL = new URL("http://127.0.0.1:" + 5010 + "/wd/hub");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            appiumURL = URL("http://127.0.0.1:" + 5010 + "/wd/hub")
+        } catch (e: MalformedURLException) {
+            e.printStackTrace()
         }
-
-        capabilities.setCapability("appPackage", "com.josh.automationtestapp");
-        capabilities.setCapability("deviceName", "Android");
-        capabilities.setCapability("appActivity", "MainActivity");
+        capabilities.setCapability("appPackage", "com.josh.automationtestapp")
+        capabilities.setCapability("deviceName", "Android")
+        capabilities.setCapability("appActivity", "MainActivity")
         //capabilities.setCapability("platformVersion", 10);
-        capabilities.setCapability("platformName", "Android");
-
-        driver = new AppiumDriver(appiumURL, capabilities);
-        autoTools = new AutomationTools(driver, AutomationTools.OperatingSystem.ANDROID);
-
+        capabilities.setCapability("platformName", "Android")
+        driver = AppiumDriver(appiumURL, capabilities)
+        autoTools = AutomationTools(driver as AppiumDriver, AutomationTools.OperatingSystem.ANDROID)
     }
 
     @Given("there has been a pebkac")
-    public void there_has_been_a_pebkac() {
-        //driver.findElement(By.id("editTextFieldId")).sendKeys("test");
-        autoTools.getElement(new String[]{"editTextFieldId", "IOSIDHERE"}, AutomationTools.IdType.DEFAULT, 15).sendKeys("test");
-        System.out.format("test: %n\n");
-
+    fun there_has_been_a_pebkac() { //driver.findElement(By.id("editTextFieldId")).sendKeys("test");
+        autoTools!!.getElement(arrayOf("editTextFieldId", "IOSIDHERE"))!!.sendKeys("test")
+        System.out.format("test: %n\n")
         //throw new cucumber.api.PendingException();
     }
-
 }
