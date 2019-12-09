@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.verint.cucumbermobileautomationframework'
+group 'com.istesting.josh.cucumber'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
