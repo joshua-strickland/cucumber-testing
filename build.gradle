@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.istesting.josh'
+group 'com.verint.cucumbermobileautomationframework'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
 
-
+//asde
     compile group: 'org.testng', name: 'testng', version: '6.14.3'
     compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.4'
     compile group: 'io.appium', name: 'java-client', version: '7.1.0'
